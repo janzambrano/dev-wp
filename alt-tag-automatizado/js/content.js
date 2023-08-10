@@ -2,14 +2,17 @@
 jQuery(document).ready(function ($) {
     // Verificar si estamos en una página con clase "single-post"
     if ($('body').hasClass('single-post')) {
-        // Obtener el texto del título h1
         var h1Text = $('.title').text().trim().replace(/\s+/g, ' ');
-
-        // Asignar el texto del título h1 como alt de la primera imagen
         var $firstImage = $('.section-post-header .image img.wp-post-image').first();
         $firstImage.attr('alt', h1Text);
+        $firstImage.addClass('alt-assigned');
+    }
 
-        // Marcar la primera imagen para excluir en la siguiente selección
+    // Verificar si estamos en una página con clase "single-productos-ganadores"
+    if ($('body').hasClass('single-productos-ganadores')) {
+        var h1Text = $('h1.title').text().trim().replace(/\s+/g, ' ');
+        var $firstImage = $('img.attachment-large').first(); // Selecciona la primera imagen con clase attachment-large
+        $firstImage.attr('alt', h1Text);
         $firstImage.addClass('alt-assigned');
     }
 
